@@ -34,16 +34,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Player)).BeginInit();
             this.SuspendLayout();
             // 
             // pb_Player
             // 
-            this.pb_Player.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pb_Player.BackColor = System.Drawing.Color.Maroon;
-            this.pb_Player.Location = new System.Drawing.Point(121, 368);
+            this.pb_Player.Location = new System.Drawing.Point(34, 371);
             this.pb_Player.Name = "pb_Player";
-            this.pb_Player.Size = new System.Drawing.Size(83, 77);
+            this.pb_Player.Size = new System.Drawing.Size(64, 61);
             this.pb_Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_Player.TabIndex = 0;
             this.pb_Player.TabStop = false;
@@ -56,7 +56,6 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.Teal;
             this.panel1.Location = new System.Drawing.Point(249, 306);
             this.panel1.Name = "panel1";
@@ -81,12 +80,21 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LimeGreen;
+            this.panel3.Location = new System.Drawing.Point(68, 251);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(29, 26);
+            this.panel3.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(549, 588);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pb_Player);
             this.Controls.Add(this.panel2);
@@ -94,6 +102,7 @@
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pb_Player)).EndInit();
@@ -109,6 +118,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel3;
 
     }
 }

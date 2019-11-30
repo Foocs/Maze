@@ -41,10 +41,10 @@ namespace Maze
 
         private void playerBoundsUpdate()
         {
-            pb_Bounds_Up = new Rectangle(pb_Player.Left, pb_Player.Top - movementSpeed, pb_Player.Width, 1);
-            pb_Bounds_Down = new Rectangle(pb_Player.Left, pb_Player.Bottom + movementSpeed, pb_Player.Width, 1);
-            pb_Bounds_Left = new Rectangle(pb_Player.Left - movementSpeed, pb_Player.Top, 1, pb_Player.Height);
-            pb_Bounds_Right = new Rectangle(pb_Player.Right + movementSpeed, pb_Player.Top, 1, pb_Player.Height);
+            pb_Bounds_Up = new Rectangle(pb_Player.Left, pb_Player.Top - movementSpeed, pb_Player.Width, movementSpeed);
+            pb_Bounds_Down = new Rectangle(pb_Player.Left, pb_Player.Bottom + movementSpeed, pb_Player.Width, movementSpeed);
+            pb_Bounds_Left = new Rectangle(pb_Player.Left - movementSpeed, pb_Player.Top, movementSpeed, pb_Player.Height);
+            pb_Bounds_Right = new Rectangle(pb_Player.Right + movementSpeed, pb_Player.Top, movementSpeed, pb_Player.Height);
 
             collisionUp = -1;
             collisionDown = -1;
@@ -124,7 +124,7 @@ namespace Maze
                     collisionRight = pan.Left - pb_Player.Right;
             }
 
-            if (up)
+            if (up && !down)
                 if (pb_Player.Top >= movementSpeed)
                     if (collisionUp == -1)
                         pb_Player.Top -= movementSpeed;
@@ -133,7 +133,7 @@ namespace Maze
                 else
                     pb_Player.Top = 0;
 
-            if (down)
+            if (down && !up)
                 if (pb_Player.Bottom <= this.ClientRectangle.Height - movementSpeed)
                     if (collisionDown == -1)
                         pb_Player.Top += movementSpeed;
@@ -143,7 +143,7 @@ namespace Maze
                     pb_Player.Top = this.ClientRectangle.Bottom - pb_Player.Height;
 
 
-            if (left)
+            if (left && !right)
                 if (pb_Player.Left >= movementSpeed)
                     if (collisionLeft == -1)
                         pb_Player.Left -= movementSpeed;
@@ -153,7 +153,7 @@ namespace Maze
                     pb_Player.Left = 0;
 
 
-            if (right)
+            if (right && !left)
                 if (pb_Player.Right <= this.ClientRectangle.Width - movementSpeed)
                     if (collisionRight == -1)
                         pb_Player.Left += movementSpeed;
@@ -164,9 +164,7 @@ namespace Maze
 
             playerBoundsUpdate();
         }
-
-
-
+    
         #endregion
 
         #endregion

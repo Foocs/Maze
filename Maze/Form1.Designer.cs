@@ -258,7 +258,7 @@
             this.panel19.BackColor = System.Drawing.Color.Black;
             this.panel19.Location = new System.Drawing.Point(404, 660);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(290, 10);
+            this.panel19.Size = new System.Drawing.Size(292, 10);
             this.panel19.TabIndex = 3;
             // 
             // panel20
@@ -266,7 +266,7 @@
             this.panel20.BackColor = System.Drawing.Color.Black;
             this.panel20.Location = new System.Drawing.Point(440, 620);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(214, 10);
+            this.panel20.Size = new System.Drawing.Size(216, 10);
             this.panel20.TabIndex = 3;
             // 
             // panel21
@@ -352,9 +352,9 @@
             // panel31
             // 
             this.panel31.BackColor = System.Drawing.Color.Black;
-            this.panel31.Location = new System.Drawing.Point(644, 245);
+            this.panel31.Location = new System.Drawing.Point(646, 245);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(126, 10);
+            this.panel31.Size = new System.Drawing.Size(124, 10);
             this.panel31.TabIndex = 3;
             // 
             // panel32
@@ -362,7 +362,7 @@
             this.panel32.BackColor = System.Drawing.Color.Black;
             this.panel32.Location = new System.Drawing.Point(453, 131);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(201, 10);
+            this.panel32.Size = new System.Drawing.Size(203, 10);
             this.panel32.TabIndex = 3;
             // 
             // panel33
@@ -482,7 +482,7 @@
             this.panel47.BackColor = System.Drawing.Color.Black;
             this.panel47.Location = new System.Drawing.Point(251, 245);
             this.panel47.Name = "panel47";
-            this.panel47.Size = new System.Drawing.Size(10, 273);
+            this.panel47.Size = new System.Drawing.Size(10, 270);
             this.panel47.TabIndex = 6;
             // 
             // panel48
@@ -592,7 +592,7 @@
             // panel61
             // 
             this.panel61.BackColor = System.Drawing.Color.Black;
-            this.panel61.Location = new System.Drawing.Point(644, 132);
+            this.panel61.Location = new System.Drawing.Point(646, 131);
             this.panel61.Name = "panel61";
             this.panel61.Size = new System.Drawing.Size(10, 123);
             this.panel61.TabIndex = 6;
@@ -600,9 +600,9 @@
             // panel62
             // 
             this.panel62.BackColor = System.Drawing.Color.Black;
-            this.panel62.Location = new System.Drawing.Point(644, 292);
+            this.panel62.Location = new System.Drawing.Point(646, 291);
             this.panel62.Name = "panel62";
-            this.panel62.Size = new System.Drawing.Size(10, 335);
+            this.panel62.Size = new System.Drawing.Size(10, 339);
             this.panel62.TabIndex = 6;
             // 
             // panel63
@@ -673,7 +673,9 @@
             this.BackColor = System.Drawing.Color.LightCyan;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(784, 761);
+            this.Controls.Add(this.panel31);
             this.Controls.Add(this.panel61);
+            this.Controls.Add(this.panel44);
             this.Controls.Add(this.panel45);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.panel67);
@@ -697,7 +699,6 @@
             this.Controls.Add(this.panel48);
             this.Controls.Add(this.panel47);
             this.Controls.Add(this.panel46);
-            this.Controls.Add(this.panel44);
             this.Controls.Add(this.panel43);
             this.Controls.Add(this.panel42);
             this.Controls.Add(this.panel41);
@@ -710,7 +711,6 @@
             this.Controls.Add(this.panel34);
             this.Controls.Add(this.panel33);
             this.Controls.Add(this.panel32);
-            this.Controls.Add(this.panel31);
             this.Controls.Add(this.panel30);
             this.Controls.Add(this.panel29);
             this.Controls.Add(this.panel28);
@@ -743,11 +743,11 @@
             this.Controls.Add(this.pb_Player);
             this.Controls.Add(this.panel2);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maze: Get to the center";
-            this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pb_Player)).EndInit();

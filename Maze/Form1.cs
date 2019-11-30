@@ -10,33 +10,14 @@ namespace Maze
         public Form1()
         {
             InitializeComponent();
-
             playerBoundsUpdate();
-            formOriginalSize = this.Size;
-
-            int i = 0;
-            foreach (Panel obj in this.Controls.OfType<Panel>())
-                originalPanels[++i] = new Rectangle(obj.Location, obj.Size);
-
-            pb_Rect = new Rectangle(pb_Player.Location, pb_Player.Size);
-            winRect = new Rectangle(winLabel.Location, winLabel.Size);
-
             pb_OriginalLocation = pb_Player.Location;
-
-            xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
-            yRatio = (float)(this.ClientRectangle.Height) / (float)(formOriginalSize.Height);
         }
 
         #region Variables
 
         int movementSpeed = 3;
 
-        static Size formOriginalSize;
-        float xRatio;
-        float yRatio;
-        static Rectangle[] originalPanels = new Rectangle[200];
-        static Rectangle pb_Rect;
-        static Rectangle winRect;
         Point pb_OriginalLocation;
 
         bool up = false;
@@ -54,8 +35,6 @@ namespace Maze
         static int collisionLeft;
         static int collisionRight;
 
-        static Panel[] WorldObjects = new Panel[2];
-
         #endregion
 
         #region Functions
@@ -72,58 +51,6 @@ namespace Maze
             collisionLeft = -1;
             collisionRight = -1;
         }
-
-        private void rezisePanel(Panel actual, Rectangle rect)
-        {
-            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
-            float yRatio = (float)(this.ClientRectangle.Height) / (float)(formOriginalSize.Height);
-
-            int newX = (int)(rect.Location.X * xRatio);
-            int newY = (int)(rect.Location.Y * yRatio);
-
-            int newWidth = (int)(rect.Size.Width * xRatio);
-            int newHeight = (int)(rect.Size.Height * yRatio);
-
-            actual.Location = new Point(newX, newY);
-            actual.Size = new Size(newWidth, newHeight);
-        }
-
-        #region Rezise
-        private void Form1_ResizeEnd(object sender, EventArgs e)
-        {
-
-            int i = 1;
-            xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
-            yRatio = (float)(this.ClientRectangle.Height) / (float)(formOriginalSize.Height);
-
-            foreach (Panel obj in this.Controls.OfType<Panel>())
-            {
-                int newX = (int)(originalPanels[i].Location.X * xRatio);
-                int newY = (int)(originalPanels[i].Location.Y * yRatio);
-
-                int newWidth = (int)(originalPanels[i].Size.Width * xRatio);
-                int newHeight = (int)(originalPanels[i++].Size.Height * yRatio);
-
-                obj.Location = new Point(newX, newY);
-                obj.Size = new Size(newWidth, newHeight);
-            }
-
-
-            int pb_newX = (int)(pb_Rect.Location.X * xRatio);
-            int pb_newY = (int)(pb_Rect.Location.Y * yRatio);
-
-            int pb_newWidth = (int)(pb_Rect.Size.Width * xRatio);
-            int pb_newHeight = (int)(pb_Rect.Size.Height * yRatio);
-
-            winLabel.Location = new Point((int)(winRect.Location.X * xRatio), (int)(winRect.Location.Y * yRatio));
-            winLabel.Size = new Size((int)(winRect.Width * xRatio), (int)(winRect.Height * yRatio));
-
-
-            pb_Player.Location = new Point(pb_newX, pb_newY);
-            pb_Player.Size = new Size(pb_newWidth, pb_newHeight);
-        }
-
-        #endregion
 
         #region Movement
 
@@ -177,7 +104,6 @@ namespace Maze
         {
             if (pb_Bounds_Up.IntersectsWith(winLabel.Bounds))
             {
-                pb_Rect.Location = pb_OriginalLocation;
                 pb_Player.Location = pb_OriginalLocation;
                 playerBoundsUpdate();
                 up = down = left = right = false;
@@ -236,7 +162,6 @@ namespace Maze
                 else
                     pb_Player.Left = this.ClientRectangle.Right - pb_Player.Width;
 
-            pb_Rect.Location = new Point((int)(pb_Player.Location.X / xRatio),(int)(pb_Player.Location.Y / yRatio));
             playerBoundsUpdate();
         }
 

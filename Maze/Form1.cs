@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace Maze
 {
@@ -26,7 +17,11 @@ namespace Maze
             int i = 0;
             foreach (Panel obj in this.Controls.OfType<Panel>())
                 originalPanels[++i] = new Rectangle(obj.Location, obj.Size);
+
             pb_Rect = new Rectangle(pb_Player.Location, pb_Player.Size);
+            winRect = new Rectangle(winLabel.Location, winLabel.Size);
+
+            pb_OriginalLocation = pb_Player.Location;
 
             xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
             yRatio = (float)(this.ClientRectangle.Height) / (float)(formOriginalSize.Height);
@@ -34,13 +29,15 @@ namespace Maze
 
         #region Variables
 
-        int movementSpeed = 5;
+        int movementSpeed = 3;
 
         static Size formOriginalSize;
         float xRatio;
         float yRatio;
-        static Rectangle[] originalPanels = new Rectangle[20];
-        static Rectangle pb_Rect = new Rectangle();
+        static Rectangle[] originalPanels = new Rectangle[200];
+        static Rectangle pb_Rect;
+        static Rectangle winRect;
+        Point pb_OriginalLocation;
 
         bool up = false;
         bool down = false;
@@ -91,6 +88,7 @@ namespace Maze
             actual.Size = new Size(newWidth, newHeight);
         }
 
+        #region Rezise
         private void Form1_ResizeEnd(object sender, EventArgs e)
         {
 
@@ -117,9 +115,15 @@ namespace Maze
             int pb_newWidth = (int)(pb_Rect.Size.Width * xRatio);
             int pb_newHeight = (int)(pb_Rect.Size.Height * yRatio);
 
+            winLabel.Location = new Point((int)(winRect.Location.X * xRatio), (int)(winRect.Location.Y * yRatio));
+            winLabel.Size = new Size((int)(winRect.Width * xRatio), (int)(winRect.Height * yRatio));
+
+
             pb_Player.Location = new Point(pb_newX, pb_newY);
             pb_Player.Size = new Size(pb_newWidth, pb_newHeight);
         }
+
+        #endregion
 
         #region Movement
 
@@ -171,6 +175,14 @@ namespace Maze
 
         private void movementUpdate_Tick(object sender, EventArgs e)
         {
+            if (pb_Bounds_Up.IntersectsWith(winLabel.Bounds))
+            {
+                pb_Rect.Location = pb_OriginalLocation;
+                pb_Player.Location = pb_OriginalLocation;
+                playerBoundsUpdate();
+                up = down = left = right = false;
+                MessageBox.Show("You won!", "Congratulations!");
+            }
             foreach (var pan in this.Controls.OfType<Panel>())
             {
                 if (pb_Bounds_Up.IntersectsWith(pan.Bounds))
@@ -228,11 +240,10 @@ namespace Maze
             playerBoundsUpdate();
         }
 
+
+
         #endregion
 
-
-
         #endregion
-            
     }
 }
